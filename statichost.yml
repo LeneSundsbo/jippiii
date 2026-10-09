@@ -1,0 +1,10 @@
+# Public directory points to the webpage root folder,
+# which is the repository root in this case.
+public: .
+
+# Custom domain configuration
+domains:
+    # Primary domain
+    - www.jippiii.com
+    # Domains that redirect to the primary
+    - jippiii.com
