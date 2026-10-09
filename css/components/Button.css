@@ -1,0 +1,184 @@
+/* FLOSSHATT — Button */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-button);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast),
+    box-shadow var(--transition-fast), opacity var(--transition-fast),
+    transform var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover:not(:disabled) {
+  transform: scale(1.03);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-first-3);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Sizes */
+.btn--sm {
+  font-size: var(--font-size-sm);
+  padding: var(--space-2) var(--space-4);
+  min-height: 32px;
+}
+
+.btn--md {
+  font-size: var(--font-size-md);
+  padding: var(--space-3) var(--space-6);
+  min-height: 40px;
+}
+
+.btn--lg {
+  font-size: var(--font-size-lg);
+  padding: var(--space-4) var(--space-8);
+  min-height: 48px;
+}
+
+.btn--xl {
+  font-size: var(--font-size-xl);
+  padding: var(--space-5) var(--space-10);
+  min-height: 60px;
+}
+
+/* Primary — farger via CSS custom properties slik at color scheme-klasser kan overstyre */
+.btn--primary {
+  background: var(--btn-bg, var(--color-first-3));
+  color:      var(--btn-text, var(--color-first-9));
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--btn-bg-hover, var(--color-first-2));
+}
+
+.btn--primary:active:not(:disabled) {
+  background: var(--btn-bg-active, var(--color-first-9));
+  color:      var(--btn-text-active, var(--color-neutral-0));
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.2);
+}
+
+/* Secondary */
+.btn--secondary {
+  background: var(--color-neutral-3);
+  color: var(--color-neutral-9);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-neutral-2);
+}
+
+.btn--secondary:active:not(:disabled) {
+  background: var(--color-neutral-3);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.1);
+}
+
+/* Ghost */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-neutral-9);
+  box-shadow: inset 0 0 0 1.5px var(--color-neutral-3);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--color-neutral-1);
+}
+
+.btn--ghost:active:not(:disabled) {
+  background: var(--color-neutral-2);
+}
+
+/* Icon */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Dark mode ─────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .btn--primary {
+  --btn-bg:          var(--color-first-7-dk);
+  --btn-text:        var(--color-first-9-dk);
+  --btn-bg-hover:    var(--color-first-9-dk);
+  --btn-bg-active:   var(--color-first-5-dk);
+  --btn-text-active: var(--color-first-1-dk);
+}
+
+[data-theme="dark"] .btn--secondary {
+  background: var(--color-neutral-2-dk, var(--color-neutral-7));
+  color: var(--color-neutral-0);
+}
+
+[data-theme="dark"] .btn--secondary:hover:not(:disabled) {
+  background: var(--color-neutral-3-dk, var(--color-neutral-8));
+}
+
+[data-theme="dark"] .btn--ghost {
+  color: var(--color-neutral-0);
+  box-shadow: inset 0 0 0 1.5px var(--color-neutral-7);
+}
+
+[data-theme="dark"] .btn--ghost:hover:not(:disabled) {
+  background: var(--color-neutral-7);
+}
+
+/* ── Color scheme-modifikatorer ─────────────────────────────────────────────
+   Plassert etter dark mode: samme spesifisitet (0,2,0) → kilderekkefølge vinner.
+   Eksplisitt valgt fargeskjema overstyrer alltid mørk modus-standardene.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.btn--primary.btn--first-light {
+  --btn-bg:          var(--color-first-3);
+  --btn-text:        var(--color-first-9);
+  --btn-bg-hover:    var(--color-first-2);
+  --btn-bg-active:   var(--color-first-9);
+  --btn-text-active: var(--color-neutral-0);
+}
+
+.btn--primary.btn--first-dark {
+  --btn-bg:          var(--color-first-7);
+  --btn-text:        var(--color-neutral-0);
+  --btn-bg-hover:    var(--color-first-9);
+  --btn-bg-active:   var(--color-first-7);
+  --btn-text-active: var(--color-neutral-0);
+}
+
+.btn--primary.btn--second-light {
+  --btn-bg:          var(--color-second-3);
+  --btn-text:        var(--color-second-9);
+  --btn-bg-hover:    var(--color-second-2);
+  --btn-bg-active:   var(--color-second-9);
+  --btn-text-active: var(--color-neutral-0);
+}
+
+.btn--primary.btn--second-dark {
+  --btn-bg:          var(--color-second-7);
+  --btn-text:        var(--color-neutral-0);
+  --btn-bg-hover:    var(--color-second-9);
+  --btn-bg-active:   var(--color-second-7);
+  --btn-text-active: var(--color-neutral-0);
+}

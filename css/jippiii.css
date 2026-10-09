@@ -1,0 +1,236 @@
+/* ============================================================
+   JIPPIII – merkevarelag oppå Flosshatt
+   Lastes sist: tokens → komponenter → jippiii.css
+   ============================================================ */
+
+@font-face {
+  font-family: "Tommy Soft";
+  src: url("../fonts/tommy-soft-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tommy Soft";
+  src: url("../fonts/tommy-soft-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* ── Jippiii-farger mappet til Flosshatts first-skala ───────── */
+:root {
+  --color-first-1: #F0EDF2;
+  --color-first-2: #D8C8F0;
+  --color-first-3: #BC99E0;
+  --color-first-5: #753BBD;
+  --color-first-7: #501B85; /* logo */
+  --color-first-8: #4B2281; /* kontrakt/sjekkliste */
+  --color-first-9: #2E1052; /* utledet: mørkeste trinn */
+
+  --color-neutral-1: #F0F0F0; /* Jippiii-bakgrunn, rgb(240 240 240) */
+
+  --font-family-base:    "Tommy Soft", system-ui, -apple-system, sans-serif;
+  --font-family-heading: "Tommy Soft", system-ui, -apple-system, sans-serif;
+  --font-weight-strong:  500;
+  --font-weight-display: 500;
+  --font-weight-button:  500;
+}
+
+/* ── Grunnlag ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-default);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-9);
+  background: var(--color-neutral-1);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ── Layout: mobil først (stablet) ─────────────────────────── */
+.j-page {
+  display: grid;
+  grid-template-areas:
+    "top"
+    "photo"
+    "body"
+    "foot";
+  min-height: 100svh;
+}
+
+.j-top {
+  grid-area: top;
+  padding: var(--space-6) var(--space-5) var(--space-4);
+}
+
+.j-logo { width: clamp(110px, 28vw, 168px); height: auto; }
+
+.j-title {
+  margin: var(--space-6) 0 0;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-display);
+  font-size: var(--font-size-6xl);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-first-7);
+}
+
+.j-photo {
+  grid-area: photo;
+  margin: 0;
+}
+/* Bildet tones ut fra 75 % og ned til helt gjennomsiktig i bunnen */
+.j-photo img {
+  -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+}
+.j-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 55% 50%;
+}
+
+.j-body {
+  grid-area: body;
+  padding: 0 var(--space-5);
+  margin-top: calc(var(--space-32) * -1);
+  position: relative;
+}
+
+.j-card { max-width: 36rem; }
+.j-card .c-content { padding: var(--space-8) var(--space-6); }
+@container (min-width: 480px) {
+  .j-card .c-content { padding: var(--space-10) var(--space-10); }
+}
+
+.j-lead {
+  margin: 0 0 var(--space-8);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-9);
+}
+
+.j-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.j-actions .btn { flex: 1 1 auto; }
+.j-actions svg { width: 1.15em; height: 1.15em; }
+
+.j-contact-name {
+  margin: 0 0 var(--space-5);
+  font-size: var(--font-size-lg);
+  color: var(--color-neutral-9);
+}
+
+.j-foot {
+  grid-area: foot;
+  align-self: end;
+  padding: var(--space-10) var(--space-5) var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-7);
+}
+.j-foot p { margin: 0; text-align: center; }
+.j-foot span,
+.j-nowrap { white-space: nowrap; }
+
+/* Ghost-knapp i Jippiii-lilla */
+.j-actions .btn--ghost {
+  color: var(--color-first-7);
+  box-shadow: inset 0 0 0 1.5px var(--color-first-3);
+}
+.j-actions .btn--ghost:hover { background: var(--color-first-1); }
+
+.btn:focus-visible { outline-color: var(--color-first-5); }
+
+/* ── Mobil: bildet øverst, logo og tittel ligger oppå bildet ── */
+@media (max-width: 899.98px) {
+  .j-page {
+    grid-template-areas:
+      "photo"
+      "body"
+      "foot";
+  }
+  .j-top {
+    grid-area: photo;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-5) calc(var(--space-12) + var(--space-12));
+  }
+  .j-title { margin: 0; }
+  .j-body { margin-top: calc(var(--space-12) * -1); }
+}
+
+/* ── Desktop: tekst rett på bildet ─────────────────────────── */
+@media (min-width: 900px) {
+  .j-page {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+      "top"
+      "."
+      "body"
+      "foot";
+    isolation: isolate;
+  }
+
+  .j-photo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .j-photo img {
+    height: 100%;
+    aspect-ratio: auto;
+    object-position: 50% 30%;
+  }
+
+  .j-top { padding: var(--space-10) var(--space-12) 0; }
+  .j-logo {
+    position: absolute;
+    top: var(--space-10);
+    right: var(--space-12);
+  }
+  .j-title {
+    margin-top: 0;
+    max-width: 9ch;
+    font-size: clamp(4rem, 2rem + 5vw, 7.5rem);
+  }
+
+  .j-body {
+    margin-top: 0;
+    margin-bottom: var(--space-24);
+    padding: 0 var(--space-12);
+  }
+  .j-card { max-width: 40rem; }
+
+  .j-foot { padding: var(--space-6) var(--space-12) var(--space-8); }
+}
+
+/* ── Litt liv ved lasting ──────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .j-title, .j-card {
+    animation: j-rise 700ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  .j-card { animation-delay: 150ms; }
+  @keyframes j-rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+}

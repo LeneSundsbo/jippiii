@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jippiii – Takk for turen!</title>
+  <meta name="description" content="Vi har parkert bobilen. Takk til alle som var med på eventyret og gjorde livet mer jippiii.">
+  <meta name="theme-color" content="#753BBD">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jippiii – Takk for turen!">
+  <meta property="og:description" content="Vi har parkert bobilen. Takk til alle som var med på eventyret og gjorde livet mer jippiii.">
+  <meta property="og:image" content="img/og-jippiii.jpg">
+  <meta property="og:locale" content="nb_NO">
+
+  <link rel="preload" href="fonts/tommy-soft-medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/tommy-soft-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/tokens/colors.css">
+  <link rel="stylesheet" href="css/tokens/typography.css">
+  <link rel="stylesheet" href="css/tokens/spacing.css">
+  <link rel="stylesheet" href="css/tokens/effects.css">
+  <link rel="stylesheet" href="css/tokens/widths.css">
+  <link rel="stylesheet" href="css/components/Button.css">
+  <link rel="stylesheet" href="css/components/Card.css">
+  <link rel="stylesheet" href="css/jippiii.css">
+</head>
+<body>
+  <main class="j-page">
+
+    <header class="j-top">
+      <img class="j-logo" src="img/jippiii-logo.svg" alt="Jippiii" width="400" height="116">
+      <h1 class="j-title">Takk for turen!</h1>
+    </header>
+
+    <figure class="j-photo">
+      <picture>
+        <source type="image/avif" srcset="img/bobil-800.avif 800w, img/bobil-1400.avif 1400w, img/bobil-2000.avif 2000w" sizes="100vw">
+        <source type="image/webp" srcset="img/bobil-800.webp 800w, img/bobil-1400.webp 1400w, img/bobil-2000.webp 2000w" sizes="100vw">
+        <img src="img/bobil-1400.jpg"
+             srcset="img/bobil-800.jpg 800w, img/bobil-1400.jpg 1400w, img/bobil-2000.jpg 2000w" sizes="100vw"
+             width="2000" height="1500" fetchpriority="high"
+             alt="Jippiii-bobilen parkert ved fjorden med snødekte fjell i bakgrunnen">
+      </picture>
+    </figure>
+
+    <section class="j-body" aria-label="Beskjed og kontakt">
+      <div class="c-card c-card--glass j-card">
+        <div class="c-content">
+          <p class="j-lead">Vi har parkert bobilen. Takk til alle som var med på eventyret og gjorde livet mer <span class="j-nowrap">jippiii <span aria-hidden="true">🤙🏻</span></span></p>
+
+          <p class="j-contact-name">Har du spørsmål til oss? Vi er fremdeles mulige å få tak i:</p>
+          <div class="j-actions">
+            <a class="btn btn--lg btn--primary btn--first-dark" href="tel:+4790600980">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              906 00 980
+            </a>
+            <a class="btn btn--lg btn--ghost js-mail" href="#" data-u="lene" data-d="jippiii.com">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              <span class="js-mail-text">lene [at] jippiii.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="j-foot">
+      <p><span>Jippiii AS</span> · <span>Frænavegen 45, 6415 Molde</span> · <span>Org.nr. 928 593 282</span></p>
+    </footer>
+
+  </main>
+
+  <script>
+    /* Setter sammen e-postadressen i nettleseren, så den ikke står ferdig i HTML-en (mindre spam). */
+    document.querySelectorAll('.js-mail').forEach(function (a) {
+      var adr = a.dataset.u + '@' + a.dataset.d;
+      a.href = 'mailto:' + adr;
+      a.querySelector('.js-mail-text').textContent = adr;
+    });
+  </script>
+</body>
+</html>
