@@ -85,6 +85,15 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--color-first-7);
 }
 
+.j-thanks {
+  max-width: 320px;
+  margin: var(--space-3) 0 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  color: var(--color-first-7);
+}
+
 .j-photo {
   grid-area: photo;
   margin: 0;
@@ -217,6 +226,7 @@ img { display: block; max-width: 100%; height: auto; }
     max-width: 9ch;
     font-size: clamp(4rem, 2rem + 5vw, 7.5rem);
   }
+  .j-thanks { margin-bottom: var(--space-6); }
 
   .j-body {
     margin-top: 0;
@@ -230,9 +240,10 @@ img { display: block; max-width: 100%; height: auto; }
 
 /* ── Litt liv ved lasting ──────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
-  .j-title, .j-card {
+  .j-title, .j-thanks, .j-card {
     animation: j-rise 700ms cubic-bezier(.2,.8,.2,1) both;
   }
+  .j-thanks { animation-delay: 75ms; }
   .j-card { animation-delay: 150ms; }
   @keyframes j-rise {
     from { opacity: 0; transform: translateY(16px); }
